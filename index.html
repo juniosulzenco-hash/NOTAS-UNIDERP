@@ -2,83 +2,89 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cálculo da Nota Final</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       background: #f5f5f5;
       text-align: center;
-      padding: 20px;
     }
-    .container {
+    .box {
       background: white;
       padding: 20px;
-      border-radius: 12px;
-      max-width: 500px;
+      border-radius: 10px;
+      width: 400px;
       margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 30px;
     }
     input {
       width: 60px;
-      margin: 5px;
-      padding: 5px;
+      margin: 3px;
       text-align: center;
     }
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 15px;
+      padding: 10px;
       background: #007bff;
       color: white;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    h3 {
-      margin-top: 20px;
+      border-radius: 6px;
     }
   </style>
 </head>
+
 <body>
 
-<div class="container">
-  <h2>Cálculo da Nota Final do Módulo</h2>
+<div class="box">
+<h2>Nota Final</h2>
 
-  <h3>PBL (20%)</h3>
-  <input id="pbl1"><input id="pbl2"><input id="pbl3"><input id="pbl4"><input id="pbl5">
+<h3>PBL (20%)</h3>
+<input id="pbl1">
+<input id="pbl2">
+<input id="pbl3">
+<input id="pbl4">
 
-  <h3>gRAT (10%)</h3>
-  <input id="grat1"><input id="grat2"><input id="grat3"><input id="grat4"><input id="grat5">
+<h3>gRAT (10%)</h3>
+<input id="grat1">
+<input id="grat2">
+<input id="grat3">
+<input id="grat4">
+<input id="grat5">
 
-  <h3>iRAT (15%)</h3>
-  <input id="irat1"><input id="irat2"><input id="irat3"><input id="irat4"><input id="irat5">
+<h3>iRAT (15%)</h3>
+<input id="irat1">
+<input id="irat2">
+<input id="irat3">
+<input id="irat4">
+<input id="irat5">
 
-  <h3>Prova Teórica (34%)</h3>
-  <input id="prova">
+<h3>Prova (34%)</h3>
+<input id="prova">
 
-  <h3>LPI (7%)</h3>
-  <input id="lpi">
+<h3>LPI (7%)</h3>
+<input id="lpi">
 
-  <h3>LMF (14%)</h3>
-  <input id="lmf">
+<h3>LMF (14%)</h3>
+<input id="lmf">
 
-  <br>
-  <button onclick="calcular()">Calcular Nota Final</button>
+<br>
+<button onclick="calcular()">Calcular</button>
 
-  <h2 id="resultado"></h2>
+<h2 id="resultado"></h2>
 </div>
 
 <script>
-function media(ids) {
+function media(lista) {
   let soma = 0;
-  ids.forEach(id => {
+  lista.forEach(id => {
     soma += parseFloat(document.getElementById(id).value) || 0;
   });
-  return soma / ids.length;
+  return soma / lista.length;
 }
 
 function calcular() {
-  let pbl = media(["pbl1","pbl2","pbl3","pbl4","pbl5"]);
+  let pbl = media(["pbl1","pbl2","pbl3","pbl4"]);
   let grat = media(["grat1","grat2","grat3","grat4","grat5"]);
   let irat = media(["irat1","irat2","irat3","irat4","irat5"]);
 
@@ -94,7 +100,8 @@ function calcular() {
     (lpi * 0.07) +
     (lmf * 0.14);
 
-  document.getElementById("resultado").innerText = "Nota Final: " + final.toFixed(2);
+  document.getElementById("resultado").innerText =
+    "Nota Final: " + final.toFixed(2);
 }
 </script>
 
